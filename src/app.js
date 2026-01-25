@@ -3,6 +3,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import authRoute from './routes/auth.router.js';
 
 // express app ----------------------------------------->
 const app = express();
@@ -22,6 +23,9 @@ app.use(cookieParser());
 app.get('/', (req, res) => {
     res.send('Server is ready.');
 });
+
+// router middleware ----------------------------------->
+app.use('/api/v1/auth', authRoute);
 
 // export module --------------------------------------->
 export default app;
